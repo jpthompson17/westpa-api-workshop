@@ -1,5 +1,8 @@
+# WESTPA API workshop
 
-# Getting started
+This repository contains resources for the WESTPA 2026 Python API workshop.
+
+## Getting started
 
 Get the source code:
 
