@@ -12,6 +12,7 @@ code or documentation changes:
 1. [Fork the WESTPA repository](https://github.com/westpa/westpa/fork),
    making sure to uncheck the "Copy the `westpa2` branch only" checkbox.
    Then create a local copy of your fork and switch to the `python-api` branch:
+
    ```shell
    git clone https://github.com/<your_username>/westpa.git
    cd westpa
@@ -21,6 +22,7 @@ code or documentation changes:
 Otherwise:
 
 1. Clone the WESTPA repository and check out the `python-api` branch:
+
    ```shell
    git clone -b python-api https://github.com/westpa/westpa.git
    cd westpa
