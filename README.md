@@ -54,7 +54,7 @@ new feature, please [create an issue](https://github.com/westpa/westpa/issues) a
 assign it to **jpthompson17**.
 
 If you'd like to work on a fix, reassign the issue  to yourself, and create
-a branch for your work, for example:
+a new branch for your work, for example:
 ```shell
 git checkout -b fix-<issue_number>
 ```
