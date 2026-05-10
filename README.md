@@ -1,33 +1,45 @@
 # WESTPA Python API workshop
 
 This repository contains resources for the WESTPA Python API workshop
-(May 18-19, 2026, at the University of Pittsburgh).
+(18–19 May 2026 at the University of Pittsburgh).
 
 
 ## Getting started
 
-1. [Fork the WESTPA repository](https://github.com/westpa/westpa/fork). 
-   Make sure to uncheck "Copy the `westpa2` branch only".
+If you have a GitHub account and are interested in [contributing](#contributing)
+code or documentation changes:
 
-2. Create a local copy of your fork, and switch to the `python-api` branch:
+1. [Fork the WESTPA repository](https://github.com/westpa/westpa/fork),
+   making sure to uncheck the "Copy the `westpa2` branch only" checkbox.
+   Then create a local copy of your fork and switch to the `python-api` branch:
    ```shell
    git clone https://github.com/<your_username>/westpa.git
    cd westpa
    git checkout python-api
    ```
+   
+Otherwise:
 
-3. Create and activate a new development environment:
+1. Clone the WESTPA repository and check out the `python-api` branch:
+   ```shell
+   git clone -b python-api https://github.com/westpa/westpa.git
+   cd westpa
+   ```
+
+Then:
+
+2. Create and activate a new development environment:
    ```shell
    conda env create -f devtools/conda-envs/test_env.yaml -n westpa-dev
    conda activate westpa-dev
    ```
 
-4. Install WESTPA in development mode:
+3. Install WESTPA in development mode:
    ```shell
    pip install -e ".[dev]"
    ```
 
-5. Build and serve the reference documentation:
+4. Build and serve the reference documentation:
    ```shell
    cd doc
    make html
@@ -53,5 +65,5 @@ with `python-api` as the destination branch.
 
 ## Links
 
-- **WESTPA Tutorials:** https://github.com/westpa/tutorials
+- **WESTPA 2.0 Tutorials:** https://github.com/westpa/tutorials
 - **Developer's Guide:** https://github.com/westpa/westpa/wiki/WESTPA-Developer%27s-Guide
