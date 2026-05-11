@@ -32,8 +32,8 @@ git checkout python-api
 
 1. Create and activate a new development environment:
    ```shell
-   conda env create -f devtools/conda-envs/test_env.yaml -n <environment_name>
-   conda activate <environment_name>
+   conda env create -f devtools/conda-envs/test_env.yaml -n <env_name>
+   conda activate <env_name>
    ```
 
 2. Install WESTPA in development mode:
