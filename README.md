@@ -1,6 +1,6 @@
-# WESTPA Python API workshop
+# WESTPA Python API Workshop
 
-This repository contains resources for the WESTPA Python API workshop
+This repository contains resources for the WESTPA Python API Workshop
 (18–19 May 2026 at the University of Pittsburgh).
 
 

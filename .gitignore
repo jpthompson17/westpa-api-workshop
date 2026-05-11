@@ -1,1 +1,7 @@
-westpa
+west.h5
+west.log
+traj_segs/
+
+__pycache__/
+
+.idea/
