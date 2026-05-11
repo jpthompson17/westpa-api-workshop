@@ -52,11 +52,11 @@ This repository contains resources for the WESTPA Python API workshop
 ## Contributing
 
 If you spot an issue in the code or documentation, or to request a change or
-new feature, please [create an issue](https://github.com/westpa/westpa/issues) and
-assign it to **jpthompson17**.
+new feature, please [create an issue](https://github.com/westpa/westpa/issues/new/choose)
+and add **jpthompson17** as an assignee. 
 
-If you'd like to work on a fix, reassign the issue  to yourself, and create
-a new branch for your work, for example:
+If you'd like to contribute a fix, assign yourself to the issue, and create a
+new branch for your work, for example:
 ```
 git checkout -b fix-<issue_number>
 ```
