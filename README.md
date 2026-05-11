@@ -57,7 +57,7 @@ assign it to **jpthompson17**.
 
 If you'd like to work on a fix, reassign the issue  to yourself, and create
 a new branch for your work, for example:
-```shell
+```
 git checkout -b fix-<issue_number>
 ```
 After making your changes, push the branch to your fork, and
