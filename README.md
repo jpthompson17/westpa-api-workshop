@@ -32,8 +32,8 @@ This repository contains resources for the WESTPA Python API workshop
 
 4. Create and activate a new Conda environment:
    ```
-   conda env create -f devtools/conda-envs/test_env.yaml -n westpa-api
-   conda activate westpa-api
+   conda env create -f devtools/conda-envs/test_env.yaml -n <env_name>
+   conda activate <env_name>
    ```
 
 5. Install WESTPA in development mode:
