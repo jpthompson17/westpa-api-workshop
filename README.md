@@ -13,12 +13,12 @@ code or documentation changes, first
 [fork the WESTPA repository](https://github.com/westpa/westpa/fork)
 (making sure to uncheck the "Copy the `westpa2` branch only" checkbox),
 then create a local copy of your fork:
-```shell
+```
 git clone https://github.com/<your_username>/westpa.git
 ```
    
 Otherwise, start by cloning the WESTPA repo directly:
-```shell
+```
 git clone https://github.com/westpa/westpa.git
 ```
 
@@ -31,7 +31,7 @@ git checkout python-api
 ### Set up a development environment
 
 1. Create and activate a new development environment:
-   ```shell
+   ```
    conda env create -f devtools/conda-envs/test_env.yaml -n <env_name>
    conda activate <env_name>
    ```
