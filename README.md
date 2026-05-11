@@ -67,5 +67,5 @@ with `python-api` as the destination branch.
 
 ## Links
 
-- **WESTPA 2.0 Tutorials:** https://github.com/westpa/tutorials
 - **Developer's Guide:** https://github.com/westpa/westpa/wiki/WESTPA-Developer%27s-Guide
+- **WESTPA 2.0 Tutorials:** https://github.com/westpa/tutorials
