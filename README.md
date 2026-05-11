@@ -6,42 +6,42 @@ This repository contains resources for the WESTPA Python API workshop
 
 ## Getting started
 
-### Get the source code
+1. Clone this repository:
+   ```
+   git clone https://github.com/jpthompson17/westpa-api-workshop
+   ```
 
-If you have a GitHub account and are interested in [contributing](#contributing)
-code or documentation changes, first  
-[fork the WESTPA repository](https://github.com/westpa/westpa/fork)
-(make sure to uncheck "Copy the `westpa2` branch only"),
-then create a local copy of your fork:
-```
-git clone https://github.com/<your_username>/westpa.git
-```
+2. If you're interested in [contributing](#contributing) code or documentation
+   changes,
+   [fork the WESTPA repository](https://github.com/westpa/westpa/fork)
+   (make sure to uncheck "Copy the `westpa2` branch only"),
+   and create a local copy of your fork:
+   ```
+   git clone https://github.com/<your_username>/westpa.git
+   ```
+   If not, clone the WESTPA repo directly:
+   ```
+   git clone https://github.com/westpa/westpa.git
+   ```
    
-Otherwise, start by cloning the WESTPA repo directly:
-```
-git clone https://github.com/westpa/westpa.git
-```
-
-Once you've downloaded the source code, switch to the `python-api` branch:
-```shell
-cd westpa
-git checkout python-api
-```
-
-### Set up a development environment
-
-1. Create and activate a new development environment:
-   ```
-   conda env create -f devtools/conda-envs/test_env.yaml -n <env_name>
-   conda activate <env_name>
+3. Check out the `python-api` branch:
+   ```shell
+   cd westpa
+   git checkout python-api
    ```
 
-2. Install WESTPA in development mode:
+4. Create and activate a new Conda environment:
+   ```
+   conda env create -f devtools/conda-envs/test_env.yaml -n westpa-api
+   conda activate westpa-api
+   ```
+
+5. Install WESTPA in development mode:
    ```shell
    pip install -e ".[dev]"
    ```
 
-3. Build and serve the reference documentation:
+6. Build and serve the reference documentation:
    ```shell
    cd doc
    make html
