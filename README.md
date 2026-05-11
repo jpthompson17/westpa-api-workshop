@@ -12,10 +12,8 @@ This repository contains resources for the WESTPA Python API workshop
    ```
 
 2. If you're interested in [contributing](#contributing) code or documentation
-   changes,
-   [fork the WESTPA repository](https://github.com/westpa/westpa/fork)
-   (make sure to uncheck "Copy the `westpa2` branch only"),
-   and create a local copy of your fork:
+   changes, [fork the WESTPA repository](https://github.com/westpa/westpa/fork) 
+   (uncheck "Copy the `westpa2` branch only"), and create a local copy of your fork:
    ```
    git clone https://github.com/<your_username>/westpa.git
    ```
