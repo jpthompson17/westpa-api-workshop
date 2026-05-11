@@ -6,42 +6,42 @@ This repository contains resources for the WESTPA Python API workshop
 
 ## Getting started
 
+### Get the source code
+
 If you have a GitHub account and are interested in [contributing](#contributing)
-code or documentation changes:
-
-1. [Fork the WESTPA repository](https://github.com/westpa/westpa/fork),
-   making sure to uncheck the "Copy the `westpa2` branch only" checkbox.
-   Then create a local copy of your fork and switch to the `python-api` branch:
-
-   ```shell
-   git clone https://github.com/<your_username>/westpa.git
-   cd westpa
-   git checkout python-api
-   ```
+code or documentation changes, first  
+[fork the WESTPA repository](https://github.com/westpa/westpa/fork)
+(making sure to uncheck the "Copy the `westpa2` branch only" checkbox),
+then create a local copy of your fork:
+```shell
+git clone https://github.com/<your_username>/westpa.git
+```
    
-Otherwise:
+Otherwise, start by cloning the WESTPA repo directly:
+```shell
+git clone https://github.com/westpa/westpa.git
+```
 
-1. Clone the WESTPA repository and check out the `python-api` branch:
+Once you've downloaded the source code, switch to the `python-api` branch:
+```shell
+cd westpa
+git checkout python-api
+```
 
+### Set up a development environment
+
+1. Create and activate a new development environment:
    ```shell
-   git clone -b python-api https://github.com/westpa/westpa.git
-   cd westpa
+   conda env create -f devtools/conda-envs/test_env.yaml -n <environment_name>
+   conda activate <environment_name>
    ```
 
-Then:
-
-2. Create and activate a new development environment:
-   ```shell
-   conda env create -f devtools/conda-envs/test_env.yaml -n westpa-dev
-   conda activate westpa-dev
-   ```
-
-3. Install WESTPA in development mode:
+2. Install WESTPA in development mode:
    ```shell
    pip install -e ".[dev]"
    ```
 
-4. Build and serve the reference documentation:
+3. Build and serve the reference documentation:
    ```shell
    cd doc
    make html
