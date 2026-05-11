@@ -8,7 +8,7 @@ This repository contains resources for the WESTPA Python API workshop
 
 1. Clone this repository:
    ```
-   git clone https://github.com/jpthompson17/westpa-api-workshop
+   git clone https://github.com/jpthompson17/westpa-api-workshop.git
    ```
 
 2. If you're interested in [contributing](#contributing) code or documentation
