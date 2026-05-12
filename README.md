@@ -41,9 +41,7 @@ This repository contains resources for the WESTPA Python API Workshop
 
 6. Build and serve the reference documentation:
    ```shell
-   cd doc
-   make html
-   python -m http.server -d _build/html
+   sphinx-autobuild doc doc/_build/html/reference
    ```
 
 
