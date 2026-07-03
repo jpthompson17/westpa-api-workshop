@@ -4,16 +4,13 @@ using the new Python API. Usage::
     python -m init_and_run
 
 """
-import functools
 import logging
 import os
 import shutil
 
 import mdtraj
 import numpy as np
-import openmm.app
 import westpa
-from openmm import unit
 
 logger = logging.getLogger(__name__)
 
@@ -22,13 +19,13 @@ def main():
     clean_up_previous_output()
     logging.basicConfig(filename='west.log', level=logging.INFO)
 
-    topology = openmm.app.PDBFile('topology.pdb').getTopology()
-    initial_state = westpa.State(file=os.path.abspath('initial_state.xml'))
+    topology_file = os.path.abspath('topol.top')
+    initial_state = westpa.State(file=os.path.abspath('initial_state.gro'))
 
     simulation = westpa.Simulation(
         datafile='west.h5',
-        propagator=propagator(topology),
-        pcoord_calculator=pcoord_calculator(topology),
+        propagator=propagator(topology_file),
+        pcoord_calculator=pcoord_calculator,
         bin_mapper=bin_mapper(),
         bin_target_counts=5,
         source=westpa.Source(states=[initial_state]),
@@ -36,54 +33,50 @@ def main():
     )
 
     simulation.initialize(states=[initial_state] * 5)
-    simulation.run(n_iters=10)
+    simulation.run(n_iters=3)
 
 
-def propagator(topology):
-    forcefield = openmm.app.ForceField('amber14-all.xml', 'amber14/tip3p.xml')
-    system = forcefield.createSystem(
-        topology,
-        nonbondedMethod=openmm.app.PME,
-        nonbondedCutoff=1 * unit.nanometer,
-        constraints=openmm.app.HBonds,
+def propagator(topology_file):
+    return westpa.GromacsPropagator(
+        topology_file,
+        md_parameters={
+            'integrator': 'sd',
+            'dt': 0.002,
+            'nsteps': 1000,
+            'nstcomm': 500,
+            'comm_mode': 'linear',
+            'comm-grps': 'system',
+            'ref_t': 300,
+            'tau_t': 1.0,
+            'tc_grps': 'System',
+            'constraints': 'hbonds',
+            'constraint_algorithm': 'LINCS',
+            'coulombtype': 'PME',
+            'fourierspacing': 0.1,
+            'pme_order': 6,
+            'ewald_rtol': 0.000001,
+            'pbc': 'xyz',
+            'rcoulomb': 0.9,
+            'rcoulomb_switch': 0.9,
+            'vdwtype': 'Cut-off',
+            'vdw_modifier': 'Potential-switch',
+            'rvdw': 0.9,
+            'rvdw_switch': 0.8,
+            'DispCorr': 'Ener',
+            'nstlist': 20,
+            'nstlog': 100,
+            'nstcalcenergy': 100,
+            'nstenergy': 100,
+            'nstxout-compressed': 500,
+        }
     )
-    system.addForce(openmm.MonteCarloBarostat(1 * unit.bar, 300 * unit.kelvin))
-    integrator = openmm.LangevinIntegrator(
-        300 * unit.kelvin, 1 / unit.picosecond, 2 * unit.femtosecond
-    )
-
-    propagator = westpa.OpenMMPropagator(
-        topology=topology,
-        system=system,
-        integrator=integrator,
-        steps=1000,
-    )
-    propagator.add_reporter(openmm.app.XTCReporter, 'traj.xtc', 500)
-    propagator.add_reporter(
-        openmm.app.StateDataReporter,
-        filename='log.csv',
-        report_interval=100,
-        options={
-            'step': True,
-            'potentialEnergy': True,
-            'kineticEnergy': True,
-            'temperature': True,
-        },
-    )
-
-    return propagator
 
 
-def get_pcoord(segment, top):
-    traj = mdtraj.load_xml(segment.final_state.file, top=top)
+def pcoord_calculator(segment):
+    traj = mdtraj.load(segment.final_state.file)
     distances = mdtraj.compute_distances(traj, atom_pairs=[[0, 1]])
     segment.pcoord = distances * 10  # nanometer -> angstrom
     return segment
-
-
-def pcoord_calculator(topology):
-    top = mdtraj.Topology.from_openmm(topology)
-    return functools.partial(get_pcoord, top=top)
 
 
 def bin_mapper():
