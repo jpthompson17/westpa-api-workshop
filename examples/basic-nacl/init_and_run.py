@@ -4,7 +4,6 @@ using the new Python API. Usage::
     python -m init_and_run
 
 """
-import functools
 import logging
 import os
 import shutil
@@ -74,16 +73,26 @@ def propagator(topology):
     return propagator
 
 
-def get_pcoord(segment, top):
-    traj = mdtraj.load_xml(segment.final_state.file, top=top)
-    distances = mdtraj.compute_distances(traj, atom_pairs=[[0, 1]])
-    segment.pcoord = distances * 10  # nanometer -> angstrom
-    return segment
-
-
 def pcoord_calculator(topology):
     top = mdtraj.Topology.from_openmm(topology)
-    return functools.partial(get_pcoord, top=top)
+
+    def get_distance(segment, parent=None):
+        atom_pairs = [[0, 1]]
+
+        if parent is not None:
+            initial_pcoord = parent.pcoord[-1]
+        else:
+            traj = mdtraj.load_xml(segment.initial_state.file, top=top)
+            distances = mdtraj.compute_distances(traj, atom_pairs)
+            initial_pcoord = distances[0] * 10  # nanometer -> angstrom
+
+        traj = mdtraj.load_xml(segment.final_state.file, top=top)
+        distances = mdtraj.compute_distances(traj, atom_pairs)
+        final_pcoord = distances[0] * 10
+
+        return np.stack((initial_pcoord, final_pcoord))
+
+    return get_distance
 
 
 def bin_mapper():
