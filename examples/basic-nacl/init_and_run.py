@@ -31,7 +31,7 @@ def main():
         bin_mapper=bin_mapper(),
         bin_target_counts=5,
         source=westpa.Source(states=[initial_state]),
-        sinks=westpa.Sink(indicator=is_bound, label='bound'),
+        sink=westpa.Sink(indicator=is_bound, label='bound'),
     )
 
     simulation.initialize(states=[initial_state] * 5)
